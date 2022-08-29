@@ -1,8 +1,17 @@
-    **Q1: What is the total amount each customer spent at the restaurant?**
+    **LeetCode Problem 177**
 
 ```sql
-  
-Select distinct customer_id, sum(price) from sales as s
-inner join menu as m on s.product_id = m.product_id
-group by customer_id
+select salary from employee as a
+      where N-1 = (select count(distinct salary) from employee as b
+                  where b.salary > a.salary)
+      limit 1
+```  
+    
+    ** LeetCode Problem 178**
+
+```sql
+
+select score, dense_rank() over (order by score desc) as "Rank" from Scores
 ```
+
+
