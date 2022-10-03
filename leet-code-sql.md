@@ -7,7 +7,7 @@ select salary from employee as a
       limit 1
 ```  
     
-    ** LeetCode Problem 178**
+    **LeetCode Problem 178**
 
 ```sql
 
