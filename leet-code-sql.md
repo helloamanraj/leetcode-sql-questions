@@ -26,3 +26,13 @@ Logs as L3
 where L1.id = L2.id+1 and L1.id = L3.id+2 and L1.num = L2.num and L2.num = L3.num 
 
 ```
+    **LeetCode Problem 184**
+
+```sql
+
+select department, employee, salary from (select d.name as department , e.name as employee , e.salary as salary , rank() over(partition by d.name order by e.salary desc) as rnk from employee as e
+inner join Department as d on e.departmentId = d.id
+) as x
+where x.rnk = 1
+
+```
