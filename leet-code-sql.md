@@ -15,7 +15,7 @@ select score, dense_rank() over (order by score desc) as "Rank" from Scores
 ```
 
 
-         **LeetCode Problem 180**
+    **LeetCode Problem 180**
 
 ```sql
 
