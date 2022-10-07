@@ -1,1 +1,2 @@
 ## LeetCode SQL Questions
+The SQL Questions on LeetCode are framed pretty similar to how they are asked on SQL Interviews hence solving SQL questions on LeetCode can give you a good hands on experience on solving real world SQL questions.
