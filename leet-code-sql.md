@@ -79,3 +79,163 @@ having count(*) >= 5
 ```
 
 
+    **LeetCode Problem 574**
+
+```sql
+with cte as (
+select candidateid, count(*) as number_of_votes
+from vote
+group by
+candidateid
+order by number_of_votes desc
+limit 1)
+
+
+select name from candidate as cand
+inner join cte as c on cand.id = c.candidateId
+
+```
+
+    **leetcode Problem 578**
+
+
+```sql
+select question_id as survey_log from survey_log
+group by question_id
+order by count(answer_id)/ count(if(action='show',1,0))desc
+limit 1
+
+```
+
+
+    **leetcode Problem 580**
+
+```sql
+select dept_name, count(s.student_id) as student_number 
+from student as s left join as department on s.dept_id = d.dept_id
+group by dept_name
+order by student_number desc, dept_name asc
+```
+-----------------------------------------------------------------------
+
+    **Leetcode Probelm 585**
+
+```sql
+
+select cast(sum(TIV_2016) as decimal(10,2)) as TIV_2016 from (
+select TIV_2016
+, count(*) over (partition by tiv_2015) as 2015_count,
+count(*) over (partition by LAT, LON) as count_loca
+
+from insurance
+) x
+where x.2015_count > 1 and x.count_loca = 1
+
+ 
+# with subquery 
+
+
+select cast(sum(TIV_2016) as decimal(10,2)) 
+from insurance 
+
+where tiv_2015 in (
+select tiv_2015 from insurance 
+group by tiv_2015 
+having count(*)>1
+) and 
+concat(lat, _ ,lon) in (
+select concat(lat,_,lon) from insurance
+group by lat,lon 
+having count(*) = 1
+)
+
+
+```
+
+
+
+    **Leet code 602**
+
+```sql
+
+select id, count(*) as num from
+(select requester_id as ids
+from request_accepted
+
+union all
+
+select acceptor_id from 
+request_accepted)
+as friend_count
+group by id 
+order by num as desc
+limit 1
+
+```
+
+    
+
+
+    **leetcode 608**
+
+```sql
+
+select distinct t1.id,
+case when t1.p_id is null then 'Root'
+when t2.P_id is null then 'Leaf'
+else 'Inner' end as type
+from tree as t1 left join tree as t2 on
+t1.id = t2.p_id
+order by t1.id
+
+```
+
+
+    **leetcode Problem 612**
+
+```sql
+
+select round(sqrt(min(pow(p1.x-p2.x,2) + pow(p1.y -p2.y,2))),2) as shortest
+from point_2d as p1
+inner join point_2d as p2
+on p1.x != p2.x or p1.y != p2.y
+
+```
+
+    **leetcode Problem 614**
+
+```sql
+select a.follower, count(b.followee) as num from
+follow as a
+inner join follow as b
+on a.follower = b.followee
+group by a.follower
+
+```
+
+
+    **leetcode Problem 626**
+
+```sql
+
+select id, 
+case when id % 2 = 0 then lag(student,1) over(order by id)
+when id % 2 != 0 then lead(student,1,student) over(order by id)
+end as student 
+from seat
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
