@@ -1,4 +1,4 @@
-    **LeetCode Problem 177**
+    LeetCode Problem 177
 
 ```sql
 select salary from employee as a
@@ -7,7 +7,7 @@ select salary from employee as a
       limit 1
 ```  
     
-    **LeetCode Problem 178**
+    LeetCode Problem 178
 
 ```sql
 
@@ -15,7 +15,7 @@ select score, dense_rank() over (order by score desc) as "Rank" from Scores
 ```
 
 
-    **LeetCode Problem 180**
+    LeetCode Problem 180
 
 ```sql
 
@@ -26,7 +26,7 @@ Logs as L3
 where L1.id = L2.id+1 and L1.id = L3.id+2 and L1.num = L2.num and L2.num = L3.num 
 
 ```
-    **LeetCode Problem 184**
+    LeetCode Problem 184
 
 ```sql
 
@@ -38,7 +38,7 @@ where x.rnk = 1
 ``` 
 
 
-    **LeetCode Problem 534**
+    LeetCode Problem 534
 
 ```sql
 select player_id, event_date, sum(games_played) over (partition by player_id order by event_date) 
@@ -47,7 +47,7 @@ from Activity
 ```
 
 
-    **LeetCode Problem 550**
+    LeetCode Problem 550
 
 ```sql
 with cte as (
@@ -67,7 +67,7 @@ on a.player_id = c.player_id
 ```
 
 
-    **LeetCode Problem 570**
+    LeetCode Problem 570
 
 ```sql
 
@@ -79,7 +79,7 @@ having count(*) >= 5
 ```
 
 
-    **LeetCode Problem 574**
+    LeetCode Problem 574
 
 ```sql
 with cte as (
@@ -96,7 +96,7 @@ inner join cte as c on cand.id = c.candidateId
 
 ```
 
-    **leetcode Problem 578**
+    leetcode Problem 578
 
 
 ```sql
@@ -108,7 +108,7 @@ limit 1
 ```
 
 
-    **leetcode Problem 580**
+    leetcode Problem 580
 
 ```sql
 select dept_name, count(s.student_id) as student_number 
@@ -118,7 +118,7 @@ order by student_number desc, dept_name asc
 ```
 -----------------------------------------------------------------------
 
-    **Leetcode Probelm 585**
+    Leetcode Probelm 585
 
 ```sql
 
@@ -154,7 +154,7 @@ having count(*) = 1
 
 
 
-    **Leet code 602**
+    Leet code 602
 
 ```sql
 
@@ -176,7 +176,7 @@ limit 1
     
 
 
-    **leetcode 608**
+    leetcode 608
 
 ```sql
 
@@ -191,7 +191,7 @@ order by t1.id
 ```
 
 
-    **leetcode Problem 612**
+    leetcode Problem 612
 
 ```sql
 
@@ -202,7 +202,7 @@ on p1.x != p2.x or p1.y != p2.y
 
 ```
 
-    **leetcode Problem 614**
+    leetcode Problem 614
 
 ```sql
 select a.follower, count(b.followee) as num from
@@ -214,7 +214,7 @@ group by a.follower
 ```
 
 
-    **leetcode Problem 626**
+    leetcode Problem 626
 
 ```sql
 
