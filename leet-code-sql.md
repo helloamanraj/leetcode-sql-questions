@@ -227,7 +227,7 @@ from seat
 
 ```
 
-    **leetcode problem 1045**
+    leetcode problem 1045
 
 ```sql
 
