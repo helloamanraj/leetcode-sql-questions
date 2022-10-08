@@ -227,6 +227,17 @@ from seat
 
 ```
 
+    **leetcode problem 1045**
+
+```sql
+
+select customer_id 
+from Customer
+group by customer_id
+having count(distinct product_key) = (select count(distinct product_key) from Product)
+
+```
+
 
 
 
