@@ -116,7 +116,7 @@ from student as s left join as department on s.dept_id = d.dept_id
 group by dept_name
 order by student_number desc, dept_name asc
 ```
------------------------------------------------------------------------
+
 
     Leetcode Probelm 585
 
@@ -154,7 +154,7 @@ having count(*) = 1
 
 
 
-    Leet code 602
+    Leetcode problem 602
 
 ```sql
 
@@ -176,7 +176,7 @@ limit 1
     
 
 
-    leetcode 608
+    leetcode problem 608
 
 ```sql
 
@@ -235,6 +235,16 @@ select customer_id
 from Customer
 group by customer_id
 having count(distinct product_key) = (select count(distinct product_key) from Product)
+
+```
+
+    leetcode problem 1045
+
+```sql
+select product_id, min(years) as first_year, quantity
+,price
+from sales 
+group by product_id
 
 ```
 
