@@ -238,7 +238,7 @@ having count(distinct product_key) = (select count(distinct product_key) from Pr
 
 ```
 
-    leetcode problem 1045
+    leetcode problem 1070
 
 ```sql
 select product_id, min(years) as first_year, quantity
@@ -249,9 +249,45 @@ group by product_id
 ```
 
 
+    leetcode 1077
 
+```sql
 
+with cte as(
+select p.project_id, p.employee_id, dense_rank() over(partition by p.project_id order by e.experience_years desc) as experience_yr_rnk
+from Project p join Employee e on p.employee_id = e.employee_id)
 
+select project_id, employee_id from tmp 
+where experience_yr_rnk = 1;
+
+``` 
+
+    leetcode 1098
+
+```sql
+WITH eligible_books AS (
+  SELECT
+    *
+  FROM
+    Books B
+  WHERE B.available_from < DATE_SUB('2019-06-23', INTERVAL 1 MONTH)
+), eligible_orders AS (
+  SELECT
+    *
+  FROM
+    Orders O
+  WHERE O.dispatch_date > DATE_SUB('2019-06-23', INTERVAL 1 YEAR)
+)
+SELECT
+  EB.book_id, EB.name
+FROM
+  eligible_books EB
+  LEFT JOIN eligible_orders EO ON EB.book_id = EO.book_id
+GROUP BY
+  EB.book_id, EB.name
+HAVING
+  SUM(EO.quantity) IS NULL OR SUM(EO.quantity) < 10
+```
 
 
 
