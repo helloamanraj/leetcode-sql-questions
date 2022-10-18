@@ -306,6 +306,32 @@ group by min_date
 
 ```
 
+leetcode 1112]
+
+```sql 
+with temp as 
+( select * , max(grade) over (partition by student_id ) as max_grade
+from enrollments)
+
+
+select student_id, min(course_id) as course_id , max(grade) as grade from temp
+where grade = max_grade
+group by student_id 
+order by student_id
+
+
+```
+leetcode 1126
+
+```sql
+
+select buss_id from (select *, avg(occurances) over(partition by event_type) as average
+from Events)
+as x
+where occurances > average
+having count(event_type) > 1 
+
+```
 
 
 
