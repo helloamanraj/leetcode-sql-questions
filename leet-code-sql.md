@@ -334,6 +334,19 @@ having count(event_type) > 1
 ```
 
 
+leetcode 1149
+
+```sql
+
+
+select viewer_id as id  from (select distinct(viewer_id), count(distinct article_id) from views 
+group by view_date, viewer_id
+having count(distinct article_id) > 1
+) x
+
+
+```
+
 
 
 
