@@ -347,6 +347,25 @@ having count(distinct article_id) > 1
 
 ```
 
+leetcode 1158
+
+```sql
+
+with 2019_orders as
+(
+select * , count(*) orders_in_2019 from orders
+where YEAR(order_date) = 2019
+group by buyer_id
+)
+
+
+
+select user_id as buyer_id, join_date, ifnull((orders_in_2019),0)
+from users as u
+left join 2019_orders as c
+on u.user_id = c.buyer_id
+```
+
 
 
 
