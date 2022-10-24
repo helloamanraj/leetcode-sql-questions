@@ -391,3 +391,24 @@ where product_id not in (select product_id from cte)
 
 
 ```
+
+leetcode 1174
+
+```sql
+
+
+with min_date as (
+select customer_id, min(order_date) as first_ord_date, 
+(case when min(order_date) = pref_del_date then "immediate" else "schedule" end ) as del_status 
+
+from delivery
+group by customer_id
+)
+
+
+select 
+(round(100*sum( case when del_status = 'immediate' then 1 else 0 end) /
+(select count(*) from min_date),2)) as immediate_percentage 
+from min_date 
+
+```
