@@ -412,3 +412,17 @@ select
 from min_date 
 
 ```
+
+leetcode 1193
+
+```sql
+
+
+
+select trans_date as month , country, count(*) as trans_count ,
+sum(case when state = 'approved' then 1 else 0 end)  as approved_count , sum(amount) as amount
+from 
+transactions
+group by month(trans_date), country
+
+```
