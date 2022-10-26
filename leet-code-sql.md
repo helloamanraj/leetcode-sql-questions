@@ -426,3 +426,16 @@ transactions
 group by month(trans_date), country
 
 ```
+
+leetcode 1204
+
+```sql 
+
+
+select person_name from (select person_name, weight, sum(weight) over (order by turn) as cul_sum 
+from queue)x
+where cul_sum <= 1000
+order by cul_sum desc
+limit 1
+
+```
