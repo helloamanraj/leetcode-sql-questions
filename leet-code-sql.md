@@ -439,3 +439,25 @@ order by cul_sum desc
 limit 1
 
 ```
+
+leetcode 1205
+
+```sql 
+
+with cte as (select  c.trans_id, t.country, 'chargeback' as state, t.amount, c.trans_date
+    from Chargebacks as c join Transactions t on c.trans_id = t.id
+    union all
+    select *
+    from Transactions
+)
+
+cte2 as (select  date_format(trans_date, '%Y-%m') as month, country, 
+        sum(case when state = 'approved' then 1 else 0 end) as approved_count,
+        sum(case when state = 'approved' then amount else 0 end) as approved_amount,
+        sum(case when state = 'chargeback' then 1 else 0 end) as chargeback_count,
+        sum(case when state = 'chargeback' then amount else 0 end) as chargeback_amount
+from cte 
+group by country, month
+having approved_amount > 0 or chargeback_amount > 0
+
+```
