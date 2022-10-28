@@ -444,7 +444,7 @@ leetcode 1205
 
 ```sql 
 
-with cte as (select  c.trans_id, t.country, 'chargeback' as state, t.amount, c.trans_date
+with cte as (select  distinct(c.trans_id), t.country, 'chargeback' as state, t.amount, c.trans_date
     from Chargebacks as c join Transactions t on c.trans_id = t.id
     union all
     select *
