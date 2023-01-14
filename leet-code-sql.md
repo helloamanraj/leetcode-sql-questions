@@ -306,7 +306,7 @@ group by min_date
 
 ```
 
-leetcode 1112]
+leetcode 1112
 
 ```sql 
 with temp as 
